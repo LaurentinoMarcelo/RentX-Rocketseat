@@ -2,6 +2,7 @@ import React from 'react';
 import { BackButton } from '../../components/BackButton';
 import { ImageSlide } from '../../components/ImageSlide';
 import { Acessory } from '../../components/Acessory';
+import { Button } from '../../components/Button';
 
 import speedSvg from '../../assets/speed.svg';
 import accelerationSvg from '../../assets/acceleration.svg';
@@ -23,7 +24,8 @@ import {
   Period,
   Price,
   About,
-  Acessorys
+  Acessorys,
+  Footer
 } from './styles';
 
 export function CardDetails() {
@@ -66,6 +68,10 @@ export function CardDetails() {
         No Teste do Leitor, proprietários de automóveis opinam sobre seus carros, suas qualidades e defeitos, manutenção e assistência técnica. Lançada com pioneirismo pelo Best Cars em 1998, a seção presta um serviço de orientação essencial ao permitir que os proprietários contem em detalhes sua experiência com os carros.
         </About>
     </Content>
+
+    <Footer>
+        <Button title="Confirmar"/>
+    </Footer>
         
     </Container>
   );
