@@ -13,13 +13,9 @@ import {
 
 import { ThemeProvider } from 'styled-components';
 import theme from './src/styles/theme';
-
-import { Home } from './src/screens/Home';
+import { Routes } from './src/routes';
 import AppLoading from 'expo-app-loading';
-import { CardDetails } from './src/screens/CarDetails';
-import { Schedules } from './src/screens/Schedules';
-import { SchedulesDetails } from './src/screens/SchedulesDetails';
-import { SchedulingComplete } from './src/screens/SchedulingComplete';
+
 
 export default function App() {
   const [ fontsLoaded ] = useFonts({
@@ -36,7 +32,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <SchedulingComplete/>
+      <Routes/>
     </ThemeProvider>
   
   );

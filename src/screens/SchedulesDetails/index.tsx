@@ -17,6 +17,9 @@ import { useTheme } from 'styled-components';
 
 import { RFValue } from 'react-native-responsive-fontsize';
 
+import { useNavigation } from '@react-navigation/native';
+
+
 import {
   Container,
   Header,
@@ -45,6 +48,11 @@ import {
 
 export function SchedulesDetails() {
     const theme = useTheme();
+    const navigation = useNavigation();
+
+    function handleConfirmRental(){
+        navigation.navigate('SchedulingComplete')
+    }
 
   return (
     <Container>
@@ -121,6 +129,7 @@ export function SchedulesDetails() {
         <Button 
             title="Alugar agora"
             color={theme.color.success}
+            onPress={handleConfirmRental}
         />
     </Footer>
         

@@ -11,6 +11,8 @@ import gasolineSvg from '../../assets/gasoline.svg';
 import exchangeSvg from '../../assets/exchange.svg';
 import peopleSvg from '../../assets/people.svg';
 
+import { useNavigation } from '@react-navigation/native';
+
 import {
   Container,
   Header,
@@ -28,7 +30,14 @@ import {
   Footer
 } from './styles';
 
-export function CardDetails() {
+export function CarDetails() {
+   const navigation = useNavigation();
+
+
+   function handleConfirmRental(){
+    navigation.navigate('Schedules')
+   }
+
   return (
     <Container>
         <Header>
@@ -70,7 +79,10 @@ export function CardDetails() {
     </Content>
 
     <Footer>
-        <Button title="Confirmar"/>
+        <Button 
+            title="Escolher período do aluguel"
+            onPress={handleConfirmRental}
+        />
     </Footer>
         
     </Container>
