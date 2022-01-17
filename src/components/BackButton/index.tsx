@@ -3,7 +3,6 @@ import { MaterialIcons } from '@expo/vector-icons'
 import { useTheme } from 'styled-components';
 import { BorderlessButtonProps } from 'react-native-gesture-handler';
 
-
 import {
   Container
 } from './styles';

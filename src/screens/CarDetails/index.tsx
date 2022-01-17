@@ -2,16 +2,12 @@ import React from 'react';
 import { BackButton } from '../../components/BackButton';
 import { ImageSlide } from '../../components/ImageSlide';
 import { Acessory } from '../../components/Acessory';
+import { TouchableOpacity } from 'react-native'
 import { Button } from '../../components/Button';
 
-import speedSvg from '../../assets/speed.svg';
-import accelerationSvg from '../../assets/acceleration.svg';
-import forceSvg from '../../assets/force.svg';
-import gasolineSvg from '../../assets/gasoline.svg';
-import exchangeSvg from '../../assets/exchange.svg';
-import peopleSvg from '../../assets/people.svg';
+import { getAccessoryIcon } from  '../../utils/getAccessoryIcon'
 
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 import {
   Container,
@@ -26,56 +22,72 @@ import {
   Period,
   Price,
   About,
-  Acessorys,
+  Accessories,
   Footer
 } from './styles';
+import { CarDTO } from '../../dtos/CarDTO';
+
+interface Params{
+    car: CarDTO
+}
 
 export function CarDetails() {
    const navigation = useNavigation();
+    const route = useRoute();
 
+    const{ car } = route.params as Params;
 
    function handleConfirmRental(){
     navigation.navigate('Schedules')
    }
 
+   function handleBack(){
+       navigation.goBack();   
+   }
+
   return (
     <Container>
         <Header>
-            <BackButton onPress={() => {}}/>
+            <TouchableOpacity onPress={handleBack}>
+                <BackButton
+                color='black'/>
+            </TouchableOpacity>
         </Header>
 
     <CarImage>
+       
         <ImageSlide
-            imagesUrl={['https://img2.gratispng.com/20180605/bjy/kisspng-2018-audi-r8-5-2-v10-plus-coupe-car-audi-coupe-gt-5b168420457462.4266803615282022722845.jpg']}
+            imagesUrl={car.photos}
         />
     </CarImage>
 
     <Content>
         <Details>
             <Description>
-                <Brand>Lamborguini</Brand>
-                <Name>Huracan</Name>
+                <Brand>{car.brand}</Brand>
+                <Name>{car.name}</Name>
             </Description>
 
             <Rent>
-                <Period>Ao dia</Period>
-                <Price>R$580</Price>
+                <Period>{car.rent.period}</Period>
+                <Price>R$ {car.rent.price}</Price>
             </Rent>
         </Details>
 
-        <Acessorys>
-            <Acessory name='380km/h' icon={speedSvg}/>
-            <Acessory name='3,2s' icon={accelerationSvg}/>
-            <Acessory name='800 HP' icon={forceSvg}/>
-            <Acessory name='Gasolina' icon={gasolineSvg}/>
-            <Acessory name='Auto' icon={exchangeSvg}/>
-            <Acessory name='2 pessoas' icon={peopleSvg}/>
-        </Acessorys>
+        <Accessories>
+            {
+                car.accessories.map(accessory => (
+                    <Acessory
+                        key={accessory.type}  
+                        name={accessory.name}
+                        icon={getAccessoryIcon(accessory.type)}
+                    />
+                ))
+            }
+        </Accessories>
         
 
-        <About>
-        No Teste do Leitor, proprietários de automóveis opinam sobre seus carros, suas qualidades e defeitos, manutenção e assistência técnica. Lançada com pioneirismo pelo Best Cars em 1998, a seção presta um serviço de orientação essencial ao permitir que os proprietários contem em detalhes sua experiência com os carros.
-        </About>
+        <About>{car.about}</About>
     </Content>
 
     <Footer>
