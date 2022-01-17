@@ -45,6 +45,7 @@ import {
   RentalPriceQuota,
   RentalPriceTotal,
 } from './styles';
+import { TouchableOpacity } from 'react-native';
 
 export function SchedulesDetails() {
     const theme = useTheme();
@@ -54,10 +55,19 @@ export function SchedulesDetails() {
         navigation.navigate('SchedulingComplete')
     }
 
+    function handleBack(){
+        navigation.goBack();   
+      }
+
   return (
     <Container>
         <Header>
-            <BackButton onPress={() => {}}/>
+            <TouchableOpacity onPress={handleBack}>
+            <BackButton 
+                color={theme.color.shape_dark}
+                />
+            </TouchableOpacity>
+            
         </Header>
 
         <CarImage>
