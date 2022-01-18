@@ -76,7 +76,7 @@ export const Price = styled.Text`
     font-size: ${RFValue(25)}px;
 `;
 
-export const Acessorys = styled.View`
+export const Accessorys = styled.View`
     width: 100%;
 
     flex-direction: row;
