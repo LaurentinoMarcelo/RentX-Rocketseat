@@ -14,7 +14,7 @@ import {
     Content,
     Footer,
   } from './styles';
-import { Alert, StatusBar, TouchableOpacity } from 'react-native';
+import {  StatusBar, TouchableOpacity } from 'react-native';
 import { Button } from '../../components/Button';
 import { 
   Calendar, 
@@ -51,15 +51,10 @@ export function Schedules() {
 
 
   function handleConfirmRental(){
-    if (!rentalPeriod.startFormated || !rentalPeriod.endFormated) {
-      Alert.alert('Selecione o intervalo para alugar.');
-    }else{
       navigation.navigate('SchedulesDetails', {
         car,
         dates: Object.keys(markedDates)
       });
-    }
-    
    }
 
    function handleBack(){
@@ -140,7 +135,8 @@ export function Schedules() {
           <Button 
             title='Confirmar'
             onPress={handleConfirmRental}
-            />
+            disabled={!rentalPeriod.startFormated}
+             />
         </Footer>
     </Container>
   );

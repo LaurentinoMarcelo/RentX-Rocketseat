@@ -48,7 +48,7 @@ export const MyCarButton = styled(TouchableOpacity)`
     background-color: ${({theme}) => theme.color.main};;
 
     position: absolute;
-    bottom: 13px;
+    bottom: 15px;
     right: 22px;
 `;
 
