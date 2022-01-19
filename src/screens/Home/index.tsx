@@ -70,7 +70,7 @@ useEffect(() => {
                     />
 
                     <TotalCars>
-                        Total de 12 carros
+                        Total de {cars.length} carros
                     </TotalCars>
                 </HeaderContent>
             </Header>
