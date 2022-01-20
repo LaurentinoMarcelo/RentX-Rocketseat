@@ -1,62 +1,60 @@
-import styled, { css } from 'styled-components/native';
-import { getStatusBarHeight } from 'react-native-iphone-x-helper';
-import { RFValue } from 'react-native-responsive-fontsize';
+import styled, { css } from "styled-components/native";
+import { getStatusBarHeight } from "react-native-iphone-x-helper";
+import { RFValue } from "react-native-responsive-fontsize";
 
 export const Container = styled.View`
   flex: 1;
-  background-color: ${({theme}) => theme.color.shape};
+  background-color: ${({ theme }) => theme.color.shape};
 `;
 
 export const Header = styled.View`
   width: 100%;
   height: 325px;
   justify-content: center;
-  background-color: ${({theme}) => theme.color.header};
+  background-color: ${({ theme }) => theme.color.header};
 
   padding: 25px;
-  padding-top: ${getStatusBarHeight() +30}px;
+  padding-top: ${getStatusBarHeight() + 30}px;
 `;
 
 export const Title = styled.Text`
-    font-family: ${({theme}) => theme.fonts.secondary_600};
-    color: ${({theme}) => theme.color.shape};
-    font-size: ${RFValue(30)}px;
+  font-family: ${({ theme }) => theme.fonts.secondary_600};
+  color: ${({ theme }) => theme.color.shape};
+  font-size: ${RFValue(30)}px;
 
-    margin-top: 24px;
+  margin-top: 24px;
 `;
 
 export const SubTitle = styled.Text`
-    font-family: ${({theme}) => theme.fonts.secondary_400};
-    color: ${({theme}) => theme.color.shape};
-    font-size: ${RFValue(15)}px;
-
-    
+  font-family: ${({ theme }) => theme.fonts.secondary_400};
+  color: ${({ theme }) => theme.color.shape};
+  font-size: ${RFValue(15)}px;
 `;
 
-export const Content  = styled.View`
-    flex: 1;
-    width: 100%;
-    padding: 0 16px;
+export const Content = styled.View`
+  flex: 1;
+  width: 100%;
+  padding: 0 16px;
 `;
 
-export const Appointments  = styled.View`
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 24px 0;
+export const Appointments = styled.View`
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
 `;
 
-export const AppointmentsTitle  = styled.Text`
-    font-family: ${({theme}) => theme.fonts.primary_400};
-    color: ${({theme}) => theme.color.text};
-    font-size: ${RFValue(15)}px;
+export const AppointmentsTitle = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.primary_400};
+  color: ${({ theme }) => theme.color.text};
+  font-size: ${RFValue(15)}px;
 `;
 
-export const AppointmentsQuantity  = styled.Text`
-    font-family: ${({theme}) => theme.fonts.primary_500};
-    color: ${({theme}) => theme.color.title};
-    font-size: ${RFValue(15)}px;
+export const AppointmentsQuantity = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.primary_500};
+  color: ${({ theme }) => theme.color.title};
+  font-size: ${RFValue(15)}px;
 `;
 
 export const CarWrapper = styled.View`

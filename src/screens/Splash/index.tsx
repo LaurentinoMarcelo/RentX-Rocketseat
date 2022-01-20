@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import BrandSvg from "../../assets/brand.svg";
 import LogoSvg from "../../assets/logo.svg";
-import { StatusBar } from 'react-native'
+import { StatusBar } from "react-native";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -20,9 +20,7 @@ export function Splash() {
   const splashAnimation = useSharedValue(0);
   const brandStyle = useAnimatedStyle(() => {
     return {
-      opacity: interpolate(splashAnimation.value,
-         [0, 25, 50], 
-         [1, .3, 0]),
+      opacity: interpolate(splashAnimation.value, [0, 25, 50], [1, 0.3, 0]),
       transform: [
         {
           translateX: interpolate(
@@ -41,7 +39,7 @@ export function Splash() {
       opacity: interpolate(
         splashAnimation.value,
         [0, 25, 50],
-        [0, .3, 1],
+        [0, 0.3, 1],
         Extrapolate.CLAMP
       ),
       transform: [
@@ -67,19 +65,18 @@ export function Splash() {
 
   useEffect(() => {
     splashAnimation.value = withTiming(50, { duration: 1000 }, () => {
-      "worklet"
+      "worklet";
       runOnJS(startApp)();
     });
   }, []);
 
   return (
-      
     <Container>
-        <StatusBar
-                barStyle="light-content"
-                backgroundColor="transparent"
-                translucent
-            />
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="transparent"
+        translucent
+      />
       <Animated.View style={[brandStyle, { position: "absolute" }]}>
         <BrandSvg width={80} height={50} />
       </Animated.View>

@@ -1,34 +1,33 @@
-import styled, { css } from 'styled-components/native';
-import { getStatusBarHeight } from 'react-native-iphone-x-helper';
-import { RFValue } from 'react-native-responsive-fontsize';
+import styled, { css } from "styled-components/native";
+import { getStatusBarHeight } from "react-native-iphone-x-helper";
+import { RFValue } from "react-native-responsive-fontsize";
 
-interface DateValueProps{
+interface DateValueProps {
   selected: boolean;
 }
 
 export const Container = styled.View`
   flex: 1;
-  background-color: ${({theme}) => theme.color.background_secondary};
+  background-color: ${({ theme }) => theme.color.background_secondary};
 `;
 
 export const Header = styled.View`
   width: 100%;
   height: 325px;
   justify-content: center;
-  background-color: ${({theme}) => theme.color.header};
+  background-color: ${({ theme }) => theme.color.header};
 
   padding: 25px;
-  padding-top: ${getStatusBarHeight() +30}px;
+  padding-top: ${getStatusBarHeight() + 30}px;
 `;
 
 export const Title = styled.Text`
-    font-family: ${({theme}) => theme.fonts.secondary_600};
-    color: ${({theme}) => theme.color.shape};
-    font-size: ${RFValue(34)}px;
+  font-family: ${({ theme }) => theme.fonts.secondary_600};
+  color: ${({ theme }) => theme.color.shape};
+  font-size: ${RFValue(34)}px;
 
-    margin-top: 24px;
+  margin-top: 24px;
 `;
-
 
 export const RentalPeriod = styled.View`
   width: 100%;
@@ -37,7 +36,6 @@ export const RentalPeriod = styled.View`
   align-items: center;
 
   margin: 32px 0;
-  
 `;
 
 export const DateInfo = styled.View`
@@ -45,17 +43,19 @@ export const DateInfo = styled.View`
 `;
 
 export const DateTitle = styled.Text`
-    font-family: ${({theme}) => theme.fonts.secondary_500};
-    color: ${({theme}) => theme.color.text};
-    font-size: ${RFValue(10)}px; 
+  font-family: ${({ theme }) => theme.fonts.secondary_500};
+  color: ${({ theme }) => theme.color.text};
+  font-size: ${RFValue(10)}px;
 `;
 
 export const DateValue = styled.Text<DateValueProps>`
-    font-family: ${({theme}) => theme.fonts.primary_500};
-    color: ${({theme}) => theme.color.shape};
-    font-size: ${RFValue(15)}px; 
+  font-family: ${({ theme }) => theme.fonts.primary_500};
+  color: ${({ theme }) => theme.color.shape};
+  font-size: ${RFValue(15)}px;
 
-    ${({ selected, theme }) => !selected && css`
+  ${({ selected, theme }) =>
+    !selected &&
+    css`
       border-bottom-width: 1px;
       border-bottom-color: ${theme.color.text};
       padding-bottom: 5px;
@@ -63,13 +63,11 @@ export const DateValue = styled.Text<DateValueProps>`
 `;
 
 export const Content = styled.ScrollView.attrs({
-  contentContainerStyle:{
-    padding: 24
+  contentContainerStyle: {
+    padding: 24,
   },
-  showsVerticalScrollIndicator: false
-})`
-
-`;
+  showsVerticalScrollIndicator: false,
+})``;
 
 export const Footer = styled.View`
   padding: 24px;

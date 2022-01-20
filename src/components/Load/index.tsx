@@ -1,6 +1,6 @@
-import React from 'react';
-import { ActivityIndicator } from 'react-native';
-import { useTheme } from 'styled-components';
+import React from "react";
+import { ActivityIndicator } from "react-native";
+import { useTheme } from "styled-components";
 
 export function Load() {
   const theme = useTheme();
@@ -8,7 +8,7 @@ export function Load() {
   return (
     <ActivityIndicator
       color={theme.color.main}
-      size='large'
+      size="large"
       style={{ flex: 1 }}
     />
   );

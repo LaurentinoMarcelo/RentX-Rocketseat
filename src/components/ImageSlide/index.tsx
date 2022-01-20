@@ -1,5 +1,5 @@
-import React , { useRef, useState } from 'react';
-import { FlatList, ViewToken } from 'react-native';
+import React, { useRef, useState } from "react";
+import { FlatList, ViewToken } from "react-native";
 
 import {
   Container,
@@ -7,18 +7,18 @@ import {
   ImageIndex,
   CardImageWrapper,
   CarImage,
-} from './styles';
+} from "./styles";
 
-interface Props{
-    imagesUrl: string[];
+interface Props {
+  imagesUrl: string[];
 }
 
-interface ChangeImageProps{
-    viewableItems: ViewToken[];
-    changed: ViewToken[];
+interface ChangeImageProps {
+  viewableItems: ViewToken[];
+  changed: ViewToken[];
 }
 
-export function ImageSlide({imagesUrl} : Props) {
+export function ImageSlide({ imagesUrl }: Props) {
   const [imageIndex, setImageIndex] = useState(0);
 
   const indexChanged = useRef((info: ChangeImageProps) => {
@@ -26,29 +26,26 @@ export function ImageSlide({imagesUrl} : Props) {
     setImageIndex(index);
   });
 
-  
-
   return (
-      <Container>
-        <ImageIndexes>
+    <Container>
+      <ImageIndexes>
         {imagesUrl.map((_, index) => (
           <ImageIndex key={String(index)} active={index === imageIndex} />
         ))}
       </ImageIndexes>
 
-        <FlatList
-          data={imagesUrl}
-          keyExtractor={(key) => key}
-          renderItem={({ item }) => (
-            <CardImageWrapper>
-              <CarImage source={{ uri: item}} resizeMode="contain" />
-            </CardImageWrapper>
-          )}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          onViewableItemsChanged={indexChanged.current}
+      <FlatList
+        data={imagesUrl}
+        keyExtractor={(key) => key}
+        renderItem={({ item }) => (
+          <CardImageWrapper>
+            <CarImage source={{ uri: item }} resizeMode="contain" />
+          </CardImageWrapper>
+        )}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        onViewableItemsChanged={indexChanged.current}
       />
-      </Container>
-    
+    </Container>
   );
 }
