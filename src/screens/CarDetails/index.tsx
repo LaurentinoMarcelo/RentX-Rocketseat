@@ -75,7 +75,7 @@ export function CarDetails() {
   function handleConfirmRental() {
     navigation.dispatch(
       CommonActions.navigate({
-        name: "Shedules",
+        name: "Schedules",
         params: {
           car,
         },
