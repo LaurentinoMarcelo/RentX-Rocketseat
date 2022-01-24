@@ -4,7 +4,6 @@ import { RFValue } from 'react-native-responsive-fontsize';
 
 export const Container = styled.View`
   padding: 0 24px;
-
   background-color: ${({theme}) => theme.color.background_primary};
 `;
 
@@ -23,7 +22,7 @@ export const Subtitle = styled.Text`
     font-size: ${RFValue(15)}px;
     font-family: ${({theme}) => theme.fonts.primary_400};
     color: ${({theme}) => theme.color.text};
-    line-height: ${RFValue(25)};
+    line-height: ${RFValue(25)}px;
     margin-top: 16px;
 `;
 
