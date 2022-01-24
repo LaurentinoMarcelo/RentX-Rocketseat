@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { BackButton } from "../../../components/BackButton";
 import { Input } from "../../../components/Input";
 import { Bullet } from "../../../components/Bullet";
@@ -19,14 +19,41 @@ import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
+  Alert
 } from "react-native";
 
+import * as Yup from 'yup';
+
 export function SignUpFirstStep() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [driveLicense, setDriveLicense] = useState('');
+
   const { navigate } = useNavigation();
 
-  function handleBack() {
-    navigate("Signin");
+  async function handleNext() {
+    try {
+      const schema = Yup.object().shape({
+        driveLicense: Yup.string().required('CNH é obrigatória'), 
+        email: Yup.string().email('E-mail inválido').required('E-mail é obrigatório'),
+        name: Yup.string().required('Nome é obrigatório'),
+      });
+
+      const data ={ name, email, driveLicense };
+      await schema.validate(data);
+
+      navigate("SignUpSecondStep", { user: data });
+    } catch (error) {
+      if (error instanceof Yup.ValidationError) {
+        return Alert.alert('Opa', error.message);
+      }
+    }
   }
+
+  function handleBack() {
+      navigate("Signin");
+  }
+
   return (
     <KeyboardAvoidingView behavior="position" enabled>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -50,12 +77,12 @@ export function SignUpFirstStep() {
 
           <Form>
             <FormTitle>1.Dados</FormTitle>
-            <Input iconName="user" placeholder="Nome" />
-            <Input iconName="mail" placeholder="Email" />
-            <Input iconName="credit-card" placeholder="CNH" />
+            <Input iconName="user" placeholder="Nome" onChangeText={setName} value={name} />
+            <Input iconName="mail" placeholder="Email" keyboardType="email-address" onChangeText={setEmail} value={email} />
+            <Input iconName="credit-card" placeholder="CNH" keyboardType="numeric" onChangeText={setDriveLicense} />
           </Form>
 
-          <Button title="Próximo" disabled={false} />
+          <Button title="Próximo" disabled={false} onPress={handleNext}/>
         </Container>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
