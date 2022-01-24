@@ -4,6 +4,7 @@ import { PasswordInput } from "../../../components/PasswordInput";
 import { Bullet } from "../../../components/Bullet";
 import { Button } from "../../../components/Button";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import { Confirmation } from "../../Confirmation";
 
 import {
   Container,
@@ -49,7 +50,11 @@ export function SignUpSecondStep() {
       return Alert.alert("As senhas não são iguais");
     }
 
-    //Enviar para a API
+    navigate("Confirmation", {
+      nextScreenRoute: "Signin",
+      title: 'Conta Criada!',
+      message: `Agora é só fazer o login\n e aproveitar.`
+    });
   }
 
   function handleBack() {
