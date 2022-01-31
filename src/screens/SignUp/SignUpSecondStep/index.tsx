@@ -4,8 +4,7 @@ import { PasswordInput } from "../../../components/PasswordInput";
 import { Bullet } from "../../../components/Bullet";
 import { Button } from "../../../components/Button";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { Confirmation } from "../../Confirmation";
-
+import {api} from '../../../services/api'
 import {
   Container,
   Header,
@@ -41,7 +40,7 @@ export function SignUpSecondStep() {
 
   const { user } = route.params as Params;
 
-  function handleRegister() {
+  async function handleRegister() {
     if (!password || !passwordConfirm) {
       return Alert.alert("Informe a senha e a confirmção.");
     }
@@ -50,11 +49,26 @@ export function SignUpSecondStep() {
       return Alert.alert("As senhas não são iguais");
     }
 
-    navigate("Confirmation", {
+    await api.post('/users', {
+      name: user.name,
+      email: user.email,
+      driverlicence: user.driverLicense,
+      password
+    })
+    .then(() => {
+       navigate("Confirmation", {
       nextScreenRoute: "Signin",
       title: 'Conta Criada!',
       message: `Agora é só fazer o login\n e aproveitar.`
     });
+    })
+    .catch((error) => {
+      console.log(error);
+      
+      Alert.alert('Opa, Não foi possível cadastrar.')
+    });
+
+   
   }
 
   function handleBack() {
