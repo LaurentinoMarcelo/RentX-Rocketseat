@@ -16,18 +16,16 @@ Ele fornece uma descrição dos veiculos juntamente com um caléndario para o ag
 ---
 ## ⚙Sobre
 
-Funcionalidades
-
-
+Projeto de uma locadora de carros digital e fictícia, consumindo API local possuindo todas as funcionalidade necessária para a locação do veiculo, como tela de detalhes do veículo, tela de agendamento de locação e etc.
 
 ---
 
 
 ## 📱Aplicanção
 
-[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/vt5fpE0bzSY)
+<img title="GoFinances" src="./Capa.png" />
   
-  ---     
+---  
 
 ## 🎨Layout
 
@@ -67,24 +65,22 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
  <h2> Para rodar o projeto, basta executar os seguintes comandos, em seu terminal com git <h2/>
  
- 
- ```
   # Faça um clone do repositório
-  
+```  
   git clone <link-do-repositório>
-
+```
   # Navegue até a pasta do projeto e baixe as dependências<h3/>
-
+```
   cd gofinance && yarn
-
+```
   # Rode o metro bundler<h3/>
-
+```
   yarn start
- 
+```
   # E, em outro terminal, execute
-
+```
   yarn android # ou yarn ios
- ```
+```
   
   
   <h4> Obs: É muito importante que o back-end esteja rodando, quando você inciar o app </h4>
